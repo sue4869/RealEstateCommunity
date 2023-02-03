@@ -6,6 +6,7 @@
 
 <aside>
 💡 구조도
+  
 - server : main 모듈의 역할을 합니다.
   - RealEstateCommunityApplication
   - support : CommonHandlerException

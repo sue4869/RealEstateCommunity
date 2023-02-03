@@ -3,6 +3,7 @@
 # 📌설계 구조 
 본 구조는  Monolithic한 아키텍처가 아닌 멀티모듈로 구현되어있습니다. 
 이전 경험에 Monolitic한 구조로 구성하다보니 처음에 만들기는 편하지만, 점점 의존성과 결합도가 강해지는 것을 느꼈습니다. 멀티모듈을 통해 의존성과 결합도를 높이는 것을 해소하고 좀 더 확장성 있는 구조로 만들고 싶었습니다.
+
 <aside>
 💡 구조도
 - server : main 모듈의 역할을 합니다.
@@ -31,7 +32,8 @@
     - repository : HeartRepository,PostRepository
     - writing-application
     - PostCreateProcessor, PostDeleteProcessor, PostHeartModifyProcessor, PostingListFetchProcessor, PostModifyProcessor, HeartCreateProcessor, MyHeartFetchProcessor, UserCheckProcessor
-      </aside>
+ </aside>
+ 
 # 📌사용한 기술들
 * Java 8 , Spring boot 2.6.4
 * MariaDB

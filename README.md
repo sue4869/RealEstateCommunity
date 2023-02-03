@@ -60,4 +60,4 @@
 * 좋아요 주기 : post - http://localhost:8080/heart/giveHeart , request data - postId 
 * 내좋아요 보기 : get - http://localhost:8080/heart/getMyHearts
 * 글목록가져오기 : get - http://localhost:8080/posting/getWritingList
-
+user테이블에 3명의 user가 존재하도록 했습니다. Authentication 에 Lessee 562 , Realtor 47, Lessor 21 를 넣어주고 테스트 하시면 됩니다.

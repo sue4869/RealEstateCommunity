@@ -1,5 +1,7 @@
 package com.example.RealEstateCommunity.writing.application.processor;
 
+import javax.transaction.Transactional;
+
 import com.example.RealEstateCommunity.writing.domain.DTO.UserDTO;
 import com.example.RealEstateCommunity.writing.domain.Post;
 import com.example.RealEstateCommunity.writing.domain.exception.UnAuthorizedUserException;
@@ -13,7 +15,8 @@ public class PostModifyProcessor {
         this.postRepository = postRepository;
     }
 
-   public Post execute(Command command, UserDTO userDTO){
+    @Transactional
+    public Post execute(Command command, UserDTO userDTO){
         Post post = postRepository.findById(command.postId).get();
         if(!post.getAccountId().equals(userDTO.getAccountId())) {
             throw new UnAuthorizedUserException();

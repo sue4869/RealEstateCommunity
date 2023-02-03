@@ -1,6 +1,7 @@
 package com.example.RealEstateCommunity.writing.application.processor;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 
 import org.springframework.context.annotation.Configuration;
 
@@ -10,6 +11,7 @@ import com.example.RealEstateCommunity.writing.domain.exception.UnAuthorizedUser
 @Configuration
 public class UserCheckProcessor {
 
+    @Transactional
     public UserDTO execute(HttpServletRequest httpServletRequest, boolean limitedAccess) {
         String authentication = httpServletRequest.getHeader("authentication");
 

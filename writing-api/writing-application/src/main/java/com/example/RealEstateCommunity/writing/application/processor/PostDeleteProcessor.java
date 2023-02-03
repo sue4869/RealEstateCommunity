@@ -2,6 +2,8 @@ package com.example.RealEstateCommunity.writing.application.processor;
 
 import java.time.Instant;
 
+import javax.transaction.Transactional;
+
 import com.example.RealEstateCommunity.writing.domain.DTO.UserDTO;
 import com.example.RealEstateCommunity.writing.domain.Post;
 import com.example.RealEstateCommunity.writing.domain.exception.AlreadyDeletedPostException;
@@ -16,6 +18,7 @@ public class PostDeleteProcessor {
         this.postRepository = postRepository;
     }
 
+    @Transactional
     public Post execute(Command command, UserDTO userDTO){
 
         Post post = postRepository.findById(command.postId).get();

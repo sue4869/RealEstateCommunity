@@ -1,5 +1,7 @@
 package com.example.RealEstateCommunity.writing.application.processor;
 
+import javax.transaction.Transactional;
+
 import com.example.RealEstateCommunity.writing.domain.DTO.UserDTO;
 import com.example.RealEstateCommunity.writing.domain.Post;
 import com.example.RealEstateCommunity.writing.domain.ReadUserModel;
@@ -17,6 +19,7 @@ public class PostCreateProcessor {
         this.userReader = userReader;
     }
 
+    @Transactional
     public Post execute(Command command, UserDTO userDTO ) {
         ReadUserModel userModel = userReader.getUserByAccountId(userDTO.getAccountId());
         Post newPost = new Post(command.title, userDTO.getAccountId(),userModel.getAccountType(),

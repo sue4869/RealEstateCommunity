@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.6.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(path: ':writing-api:writing-domain', configuration: 'default')
+    implementation project(path: ':writing-api:writing-application', configuration: 'default')
+    implementation project(path: ':writing-api:writing-presentation', configuration: 'default')
+
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2"
+}
+
+

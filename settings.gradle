@@ -1,0 +1,19 @@
+rootProject.name = 'RealEstateCommunity'
+include('server')
+include('common')
+include(
+        'user-api',
+        'user-api:user-domain',
+        'user-api:user-application',
+        'user-api:user-presentation',
+        'user-api:user-infrastructure'
+)
+include(
+        'writing-api',
+        'writing-api:writing-domain',
+        'writing-api:writing-application',
+        'writing-api:writing-presentation',
+        'writing-api:writing-infrastructure'
+)
+
+

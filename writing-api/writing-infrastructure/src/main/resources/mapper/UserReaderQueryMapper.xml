@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.RealEstateCommunity.writing.domain.UserReader">
+
+    <select id="getUserByAccountId" parameterType="Long" resultType="ReadUserModel">
+        SELECT u.nickname as nickname,
+               u.account_type as accountType,
+               u.account_id as accountId,
+               u.quit as quit
+        FROM user u
+        WHERE u.account_id = #{accountId}
+    </select>
+
+</mapper>
+
+

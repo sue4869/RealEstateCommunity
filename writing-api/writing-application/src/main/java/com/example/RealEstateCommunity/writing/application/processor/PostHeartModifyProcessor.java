@@ -1,9 +1,8 @@
 package com.example.RealEstateCommunity.writing.application.processor;
 
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.transaction.Transactional;
 
@@ -20,7 +19,6 @@ public class PostHeartModifyProcessor {
 
     private final HeartRepository heartRepository;
     private final PostRepository postRepository;
-    private Map<Long, Long> heartMap;
 
     public PostHeartModifyProcessor(
         HeartRepository heartRepository,
@@ -33,33 +31,27 @@ public class PostHeartModifyProcessor {
     @Transactional
     public void execute() {
         List<Heart> heartList = heartRepository.findByChecked(false);
-        heartMap = new HashMap<>();
-        setHeartMap(heartList);
-        setHeartNumber();
+        Map<Long, Long> heartMap = new ConcurrentHashMap<>();
+        setHeartMap(heartList, heartMap);
+        setHeartNumber(heartMap);
     }
 
-    private void setHeartMap(List<Heart> heartList){
+    private void setHeartMap(List<Heart> heartList, Map<Long, Long> heartMap){
         Long start = 1L;
 
         for(Heart heart : heartList) {
-            Long key = heart.getPostId();
+            Long postId = heart.getPostId();
 
             heart.setChecked(true);
             heartRepository.save(heart);
-
-            if(heartMap.get(key) == null) {
-                heartMap.put(key, start);
-                continue;
-            }
-            heartMap.put(key, heartMap.get(key)+1 );
+            heartMap.compute(postId,(k,v) -> (v == null) ? 1 : v + 1 );
         }
     }
 
-    private void setHeartNumber() {
-        Long addNumber;
+    private void setHeartNumber(Map<Long, Long> heartMap) {
 
         for( Long postId : heartMap.keySet() ){
-            addNumber = heartMap.get(postId);
+            Long addNumber = heartMap.get(postId);
             Post post = postRepository.findById(postId).get();
             post.addHeartNumber(addNumber);
             postRepository.save(post);

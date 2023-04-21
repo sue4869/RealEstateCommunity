@@ -16,7 +16,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import com.example.RealEstateCommunity.common.AccountType;
 import com.sun.istack.NotNull;
 
-@Entity
+@Entity(name = "post")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

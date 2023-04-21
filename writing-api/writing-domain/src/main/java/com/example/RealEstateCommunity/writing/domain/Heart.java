@@ -10,7 +10,7 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-@Entity
+@Entity(name = "heart")
 public class Heart {
 
     @Id

@@ -1,6 +1,7 @@
-DROP TABLE user;
-DROP TABLE post;
-DROP TABLE heart;
+/*
+DROP TABLE User;
+DROP TABLE Post;
+DROP TABLE Heart;
 CREATE TABLE user (
                       id bigint not null auto_increment,
                       account_id bigint,
@@ -34,12 +35,12 @@ CREATE TABLE heart (
                        post_id bigint,
                        primary key (id)
 );
-INSERT INTO user (id,account_id, account_type,  nickname, quit, created_at, updated_at)
+INSERT INTO user (id,account_id, account_type,nickname, quit, created_at, updated_at)
 VALUES (0,47,'Realtor','김씨','0',now(),now()),(0,21,'Lessor','박씨',false,now(),now()),(0,562,'Lessee','유씨','0',now(),null);
 
 INSERT INTO post (account_id, account_nickname, account_type, actived, contents, created_at, deleted_at, heart_number, title, updated_at)
     VALUE (562,'유씨','LESSEE',1,'집이 너무 좋아요',now(),null,true,'집구경 후기',null);
 
 INSERT INTO heart (account_id, checked, created_at, post_id) VALUE (47,false,now(),1);
-
+*/
 

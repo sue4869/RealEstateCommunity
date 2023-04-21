@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.example.RealEstateCommunity.writing.application.processor.PostHeartModifyProcessor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,14 +26,17 @@ public class HeartController {
     private final HeartCreateProcessor heartCreateProcessor;
     private final MyHeartFetchProcessor myHeartFetchProcessor;
     private final UserCheckProcessor userCheckProcessor;
+    private final PostHeartModifyProcessor postHeartModifyProcessor;
+
 
     public HeartController(
-        HeartCreateProcessor heartCreateProcessor,
-        MyHeartFetchProcessor myHeartFetchProcessor,
-        UserCheckProcessor userCheckProcessor) {
+            HeartCreateProcessor heartCreateProcessor,
+            MyHeartFetchProcessor myHeartFetchProcessor,
+            UserCheckProcessor userCheckProcessor, PostHeartModifyProcessor postHeartModifyProcessor) {
         this.heartCreateProcessor = heartCreateProcessor;
         this.myHeartFetchProcessor = myHeartFetchProcessor;
         this.userCheckProcessor = userCheckProcessor;
+        this.postHeartModifyProcessor = postHeartModifyProcessor;
     }
 
     @PostMapping("/giveHeart")

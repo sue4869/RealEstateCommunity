@@ -26,7 +26,6 @@ public class HeartController {
     private final HeartCreateProcessor heartCreateProcessor;
     private final MyHeartFetchProcessor myHeartFetchProcessor;
     private final UserCheckProcessor userCheckProcessor;
-    private final PostHeartModifyProcessor postHeartModifyProcessor;
 
 
     public HeartController(
@@ -36,7 +35,6 @@ public class HeartController {
         this.heartCreateProcessor = heartCreateProcessor;
         this.myHeartFetchProcessor = myHeartFetchProcessor;
         this.userCheckProcessor = userCheckProcessor;
-        this.postHeartModifyProcessor = postHeartModifyProcessor;
     }
 
     @PostMapping("/giveHeart")

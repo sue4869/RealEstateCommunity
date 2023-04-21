@@ -37,7 +37,6 @@ public class PostHeartModifyProcessor {
     }
 
     private void setHeartMap(List<Heart> heartList, Map<Long, Long> heartMap){
-        Long start = 1L;
 
         for(Heart heart : heartList) {
             Long postId = heart.getPostId();
